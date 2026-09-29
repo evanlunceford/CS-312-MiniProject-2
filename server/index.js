@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
 
-// Adds the 24h percent change, since the API only gives the price from 24h ago
+//Adds the 24h percent change, since the API only gives the price from 24h ago
 function formatTicker(t) {
   const [base, quote] = t.symbol.split("-");
   const change =
@@ -26,7 +26,7 @@ function formatTicker(t) {
   };
 }
 
-// All actively traded pairs, optionally filtered by quote currency (the "category")
+// All actively traded pairs, filters by category as well
 app.get("/api/tickers", async (req, res) => {
   try {
     const response = await axios.get(`${API_BASE}/tickers`);
